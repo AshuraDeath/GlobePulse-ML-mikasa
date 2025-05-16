@@ -46,32 +46,23 @@
 
 ---
 
-## Project Structure
+## Quick Start: Hello, GlobePulse!
 
-- `/etl` — Extraction, transformation, and loading modules  
-- `/schemas` — JSON schemas and validation rules  
-- `/orchestration` — Workflow definitions and scheduling configs  
-- `/docs` — Technical documentation and API references  
-- `/tests` — Unit and integration tests for pipeline components  
+Here’s a minimal example demonstrating how to load and query the GlobePulse JSON dataset in JavaScript/Node.js:
 
----
+```js
+// Load country data JSON (example: India data)
+const fs = require('fs');
 
-## Contribution
+const rawData = fs.readFileSync('./data/IND.json');
+const countryData = JSON.parse(rawData);
 
-Contributions are welcome! Please open issues or pull requests for bugs, feature requests, or improvements.
+// Access official and common country names
+console.log('Official Name:', countryData.country.name.official);
+console.log('Common Name:', countryData.country.name.common);
 
----
+// Example: print capital city
+console.log('Capital City:', countryData.infrastructure.capitalCity);
 
-## License
-
-This project is licensed under the MIT License.
-
----
-
-## Contact
-
-For questions or support, please open an issue or reach out to <later>.
-
----
-
-**GlobePulse** — powering global insights with timely, trustworthy data.
+// Example: population
+console.log('Population:', countryData.demographics.population);
